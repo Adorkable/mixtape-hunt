@@ -1,0 +1,2 @@
+// Mixtape js
+$(document).ready(function(){$(function(){var e=$(".trapezoid");$(window).scroll(function(){var t=$(window).scrollTop();t>=200?e.addClass("fixedfoot"):e.removeClass("fixedfoot")})});$("a.wellplayed").click(function(){$("section.wellplayed").removeClass("hidden")});$(".closecompose").click(function(){$("section.wellplayed").addClass("hidden")})});

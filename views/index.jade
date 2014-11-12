@@ -1,0 +1,83 @@
+doctype html
+html(lang="en")
+	head
+		if (pageTitle != false)
+			title #{pageTitle}
+		meta(name='viewport', content='width=device-width, initial-scale=1.0')
+		link(rel='stylesheet', href='/style.css')
+		if googleAnalyticsTID != false
+			script.
+				(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+				})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+				ga('create', '#{googleAnalyticsTID}', 'auto');
+				ga('send', 'pageview');
+
+body
+
+	div.about.md-modal.md-effect-12#about
+		div.md-content
+			if (pageTitle != false)
+				h1 #{pageTitle}
+			div
+				if aboutHTML != false
+					!{aboutHTML}
+				button.md-close On with the hunt!
+
+	each track, trackIndex in tracks
+		if (track == unlockedTrack || track == focusedTrack)
+			div.wellplayed.md-modal.md-effect-3(id='#{track.name}')
+				div.md-content
+					if (track == unlockedTrack)
+						h1 Well played! You've unlocked this track:
+					else
+						h1 Enjoy this track someone unlocked:
+					h3 #{trackIndex + 1} — #{track.title}
+					|!{track.embedCode()}
+					button.md-close Close!
+
+	div.container
+		section.header
+			if (pageTitle != false)			
+				h1 
+					a(href='/') #{pageTitle}
+			button(class='wellplayed md-trigger', href='#', data-modal='about') About the project
+
+		section.container#tracks
+			each track, trackIndex in tracks
+				if (track == unlockedTrack || track == focusedTrack)
+					//
+						div.popup.focused#popup
+							a.closecompose Cancel
+							if (track == unlockedTrack)
+								h1 Well played! You've unlocked this track:
+							else
+								h1 Enjoy this track someone unlocked:
+							h3 #{trackIndex + 1} — #{track.title}
+							|!{track.embedCode()}
+
+				include track.jade
+
+			if debugHTML
+				a(href="/eat_doughnuts") lock all
+				br
+				a(href="/bake_doughnuts") unlock all
+
+	div.md-overlay
+
+	script(src='//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js')
+	
+	script(type='text/javascript', src='js/jquery.fancybox.js?v=2.1.5')
+	script(type='text/javascript', src='js/jquery.fancybox-media.js?v=1.0.6')
+
+	script(type='text/javascript', src='js/classie.js')
+	script(type='text/javascript', src='js/modalEffects.js')
+	script(type='text/javascript', src='js/mixtaped.js')
+	script.
+		$('html, body').animate({
+		scrollTop: $("#focused").offset().top
+		}, 1);
+		$('#tracks').scroll(function() { 
+		$('#popup').css('top', $(this).scrollTop());
+		});	

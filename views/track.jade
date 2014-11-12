@@ -1,0 +1,34 @@
+article.track
+	if debugHTML
+		|#{track.name}
+	div.flip-container
+		if track.isUnlocked()
+			div.front.unlocked
+				a(href=track.imageNameWide(), class='fancybox', title='#{track.title}')
+					img(src=track.imageNameWide())
+					img(src=track.imageNameUnlocked())
+				if (track == focusedTrack)		
+					textfield#focused
+			div.back
+				div.backcontent
+					h2.unlocked Unlocked
+					p #{trackIndex + 1} — #{track.title}
+					h3
+						a(href=track.focusURL(debugHTML), class='md-trigger',  data-modal='#{track.name}')
+							div.unfocused Press play!
+		else 
+			div.locked.flipper
+				div.front
+					a(href=track.imageNameLocked(), class='fancybox')
+						img(src=track.imageNameLocked())
+				div.back
+					div.backcontent
+						h2 Locked
+						p #{track.hintHTML()}
+						|#{trackIndex + 1} - 
+						|locked
+						if debugHTML
+							|&nbsp;- 
+							a(href=track.unlockURL(debugHTML)) unlock
+							|&nbsp;- 
+							a(href=track.unlockURL(false)) #{track.unlockURL(false)}

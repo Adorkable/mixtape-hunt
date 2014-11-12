@@ -1,0 +1,40 @@
+{
+  "name": "mixtape hunt",
+  "version": "1.0.0",
+  "description": "a Node.js web app for providing a collaborative unlockable scavenger hunt",
+  "author": "Adorkable <yo.ian.g@gmail.com>",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Adorkable/mixtape-hunt.git"
+  },
+  "keywords": [
+    "mixtape",
+    "music",
+    "hunt"
+  ],
+  "license": "MIT",
+  "contributors": [
+    {
+      "name": "Trish Ang",
+      "email": "feeshsauce@gmail.com"
+    },
+    {
+      "name": "Ian Grossberg",
+      "email": "yo.ian.g@gmail.com"
+    }
+  ],
+  "homepage": "https://github.com/Adorkable/mixtape-hunt",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/Adorkable/mixtape-hunt/issues"
+  },
+  "dependencies": {
+    "config": "~1.2.4",
+    "crypto": "0.0.3",
+    "express": "~4.9.7",
+    "jade": "~1.7.0",
+    "node-persist": "0.0.2",
+    "universal-analytics": "^0.3.4"
+  }
+}

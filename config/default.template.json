@@ -1,0 +1,32 @@
+{
+  "listen_port": 3000,
+  "google_analytics_tid": "UA-XXXXXXX-X",
+  "page_title": "Let's unlock'em all",
+  "about_html" : "Do you like it? Jump up and high five someone.",
+  "tracks": [
+    {
+      "name": "hay",
+      "type": "youtube",
+      "src": "12341234",
+      "title": "Ohkay",
+      "hint": "",
+      "unlocked": false
+    },
+    {
+      "name": "horses",
+      "type": "youtube",
+      "src": "12341234",
+      "title": "Is For",
+      "hint": "",
+      "unlocked": false
+    },
+    {
+      "name": "airplanes",
+      "type": "youtube",
+      "src": "12341234",
+      "title": "All ab",
+      "hint": "",
+      "unlocked": false
+    }
+  ]
+}
