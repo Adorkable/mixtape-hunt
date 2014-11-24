@@ -14,70 +14,69 @@ html(lang="en")
 				ga('create', '#{googleAnalyticsTID}', 'auto');
 				ga('send', 'pageview');
 
-body
+	body
+		div.about.md-modal.md-effect-12#about
+			div.md-content
+				if (pageTitle != false)
+					h1 #{pageTitle}
+				div
+					if aboutHTML != false
+						!{aboutHTML}
+					button.md-close On with the hunt!
 
-	div.about.md-modal.md-effect-12#about
-		div.md-content
-			if (pageTitle != false)
-				h1 #{pageTitle}
-			div
-				if aboutHTML != false
-					!{aboutHTML}
-				button.md-close On with the hunt!
+		each track, trackIndex in tracks
+			if (track == unlockedTrack || track == focusedTrack)
+				div.wellplayed.md-modal.md-effect-3(id='#{track.name}')
+					div.md-content
+						if (track == unlockedTrack)
+							h1 Well played! You've unlocked this track:
+						else
+							h1 Enjoy this track someone unlocked:
+						h3 #{trackIndex + 1} — #{track.title}
+						|!{track.embedCode()}
+						button.md-close Close!
 
-	each track, trackIndex in tracks
-		if (track == unlockedTrack || track == focusedTrack)
-			div.wellplayed.md-modal.md-effect-3(id='#{track.name}')
-				div.md-content
-					if (track == unlockedTrack)
-						h1 Well played! You've unlocked this track:
-					else
-						h1 Enjoy this track someone unlocked:
-					h3 #{trackIndex + 1} — #{track.title}
-					|!{track.embedCode()}
-					button.md-close Close!
+		div.container
+			section.header
+				if (pageTitle != false)			
+					h1 
+						a(href='/') #{pageTitle}
+				button(class='wellplayed md-trigger', href='#', data-modal='about') About the project
 
-	div.container
-		section.header
-			if (pageTitle != false)			
-				h1 
-					a(href='/') #{pageTitle}
-			button(class='wellplayed md-trigger', href='#', data-modal='about') About the project
+			section.container#tracks
+				each track, trackIndex in tracks
+					if (track == unlockedTrack || track == focusedTrack)
+						//
+							div.popup.focused#popup
+								a.closecompose Cancel
+								if (track == unlockedTrack)
+									h1 Well played! You've unlocked this track:
+								else
+									h1 Enjoy this track someone unlocked:
+								h3 #{trackIndex + 1} — #{track.title}
+								|!{track.embedCode()}
 
-		section.container#tracks
-			each track, trackIndex in tracks
-				if (track == unlockedTrack || track == focusedTrack)
-					//
-						div.popup.focused#popup
-							a.closecompose Cancel
-							if (track == unlockedTrack)
-								h1 Well played! You've unlocked this track:
-							else
-								h1 Enjoy this track someone unlocked:
-							h3 #{trackIndex + 1} — #{track.title}
-							|!{track.embedCode()}
+					include track.jade
 
-				include track.jade
+				if debugHTML
+					a(href="/eat_doughnuts") lock all
+					br
+					a(href="/bake_doughnuts") unlock all
 
-			if debugHTML
-				a(href="/eat_doughnuts") lock all
-				br
-				a(href="/bake_doughnuts") unlock all
+		div.md-overlay
 
-	div.md-overlay
+		script(src='//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js')
+		
+		script(type='text/javascript', src='js/jquery.fancybox.js?v=2.1.5')
+		script(type='text/javascript', src='js/jquery.fancybox-media.js?v=1.0.6')
 
-	script(src='//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js')
-	
-	script(type='text/javascript', src='js/jquery.fancybox.js?v=2.1.5')
-	script(type='text/javascript', src='js/jquery.fancybox-media.js?v=1.0.6')
-
-	script(type='text/javascript', src='js/classie.js')
-	script(type='text/javascript', src='js/modalEffects.js')
-	script(type='text/javascript', src='js/mixtaped.js')
-	script.
-		$('html, body').animate({
-		scrollTop: $("#focused").offset().top
-		}, 1);
-		$('#tracks').scroll(function() { 
-		$('#popup').css('top', $(this).scrollTop());
-		});	
+		script(type='text/javascript', src='js/classie.js')
+		script(type='text/javascript', src='js/modalEffects.js')
+		script(type='text/javascript', src='js/mixtaped.js')
+		script.
+			$('html, body').animate({
+			scrollTop: $("#focused").offset().top
+			}, 1);
+			$('#tracks').scroll(function() { 
+			$('#popup').css('top', $(this).scrollTop());
+			});	
