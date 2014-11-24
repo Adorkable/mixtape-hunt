@@ -1,5 +1,5 @@
 {
-  "name": "mixtape hunt",
+  "name": "mixtape-hunt",
   "version": "1.0.0",
   "description": "a Node.js web app for providing a collaborative unlockable scavenger hunt",
   "author": "Adorkable <yo.ian.g@gmail.com>",
