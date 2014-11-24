@@ -45,11 +45,19 @@ function html() {
 		},
 
 		render: function(tracks, unlockedTrack, focusedTrack, debug) {
+			var actualTracks;
+			if (tracks)
+			{
+				actualTracks = tracks.all;
+			} else
+			{
+				actualTracks = [];
+			}
 			return index({
 				pageTitle: this.pageTitle,
 				aboutHTML: this.aboutHTML,
 				googleAnalyticsTID: this.googleAnalyticsTID,
-				tracks: tracks.all,
+				tracks: actualTracks,
 				unlockedTrack: unlockedTrack,
 				focusedTrack: focusedTrack,
 				debugHTML: debug
