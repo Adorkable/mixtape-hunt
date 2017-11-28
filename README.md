@@ -3,6 +3,7 @@ mixtape hunt
 **mixtape hunt** is a Node.js web app for providing a collaborative unlockable scavenger hunt. Users unlock individual pieces of media by browsing to unique URLs and can see what pieces of media have been unlocked by other users.
 
 [![dependancies](https://david-dm.org/Adorkable/mixtape-hunt.svg)](https://david-dm.org/Adorkable/mixtape-hunt)
+[![Known Vulnerabilities](https://snyk.io/test/github/adorkable/mixtape-hunt/badge.svg)](https://snyk.io/test/github/adorkable/mixtape-hunt)
 
 Originally created as [Press Play NYC](http://www.pressplay.nyc), a mixtape scavenger hunt for Youtube song tracks around Manhattan, **mixtape hunt** has been refactored to suite any purpose and will continue to expand in customization and support.
 
