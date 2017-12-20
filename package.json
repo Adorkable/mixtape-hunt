@@ -32,9 +32,15 @@
   "dependencies": {
     "config": "~1.2.4",
     "crypto": "0.0.3",
-    "express": "~4.9.7",
-    "jade": "~1.7.0",
+    "express": "~4.16.0",
+    "jade": "~1.8.0",
     "node-persist": "0.0.2",
-    "universal-analytics": "^0.3.4"
-  }
+    "universal-analytics": "^0.3.4",
+    "snyk": "^1.61.1"
+  },
+  "scripts": {
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
+  },
+  "snyk": true
 }
